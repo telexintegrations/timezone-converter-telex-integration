@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request,HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime, timezone
 import pytz
 import os
@@ -11,8 +12,18 @@ from dateparser import parse
 
 app = FastAPI()
 
+origins =[
+    'https://ping.telex.im',
+    'https://telex.im',
+]
 
-# BASE_URL = 'https://myurl.com'
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 ALL_TIMEZONES = list(pytz.all_timezones)
 IMAGE_PATH='img/logo.png'
 

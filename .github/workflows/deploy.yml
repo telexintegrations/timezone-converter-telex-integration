@@ -1,29 +1,26 @@
-name: Deployment Pipeline
+# name: Deployment Pipeline
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
 
-      - name: Deploy Application
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          EC2_HOST: ${{ secrets.HOST }}
-          EC2_USER: ubuntu
-        run: |
-          echo "$SSH_PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
-          ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
-            cd timezone-converter-telex-integration
-            git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
-            sudo systemctl restart fastapi
-          EOF
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '14'
+
+#       - name: Install Vercel CLI
+#         run: npm install -g vercel
+
+#       - name: Deploy to Vercel
+#         env:
+#           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+#         run: vercel --prod --token $VERCEL_TOKEN
