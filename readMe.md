@@ -32,7 +32,7 @@ Before you begin, ensure you have the following installed:
 ## Installation
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/smart-timezone-converter.git
+    git clone https://github.com/TryYourBestAndLeaveTheRest/smart-timezone-converter.git
     cd smart-timezone-converter
     ```
 2. **Install Dependencies**:
