@@ -43,11 +43,6 @@ Before you begin, ensure you have the following installed:
     ```bash
     poetry install
     ```
-3. **Set Up Environment Variables**:
-    Create a `.env` file in the root directory and add any necessary environment variables. For example:
-    ```env
-    IMAGE_PATH=img/logo.png
-    ```
 
 ## Usage
 1. **Run the Server**:
