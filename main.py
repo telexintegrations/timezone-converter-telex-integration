@@ -113,7 +113,7 @@ def get_integration_json(request:Request):
 
 
 
-def process_time_conversion(request: TimeConversionRequest):
+async def process_time_conversion(request: TimeConversionRequest):
     """
     Process the request body and convert the detected time to the user's timezone.
     """
@@ -159,7 +159,7 @@ def process_time_conversion(request: TimeConversionRequest):
 
 @app.post("/convert-time")
 async def convert_time(request: TimeConversionRequest):
-    result = process_time_conversion(request)
+    result = await process_time_conversion(request)
     if "error" in result:
         raise HTTPException(status_code=400, detail=result)
     return result
