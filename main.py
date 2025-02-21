@@ -11,11 +11,13 @@ from dateparser import parse
 
 
 app = FastAPI()
-
-origins =[
-    'https://ping.telex.im',
-    'https://telex.im',
+origins = [
+    "https://telex.im",
+    "https://staging.telex.im",
+    "http://telextest.im",
+    "http://staging.telextest.im"
 ]
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -109,27 +111,6 @@ def get_integration_json(request:Request):
 }
     return integration_json
 
-# import re
-# import pytz
-# from datetime import datetime, timezone
-# from dateutil.parser import parse
-# from fastapi import FastAPI, HTTPException
-# from pydantic import BaseModel
-# from typing import List, Dict, Any
-
-# app = FastAPI()
-
-# # Define the request body model
-# class Setting(BaseModel):
-#     label: str
-#     type: str
-#     default: str
-#     required: bool
-
-# class TimeConversionRequest(BaseModel):
-#     message: str
-#     settings: List[Setting]
-#     channel_id: str
 
 
 def process_time_conversion(request: TimeConversionRequest):
